@@ -1,20 +1,20 @@
-format PE CONSOLE
-include 'C:\FASM\INCLUDE\win32ax.inc'
+format PE CONSOLE  ; определение формат консоли
+include 'C:\FASM\INCLUDE\win32ax.inc' ; включение библиотеки
 
 
 entry start
 
-section '.data?' data readable writeable
+section '.data?' data readable writeable ; секция неинициализированных данных
 
    A    dd ?
    B    dd ?
    C    dd ?
    D    dd ?
 
-section '.data' data readable
+section '.data' data readable ; секция инициализированных данных
    answ    db  'A+B+1 = %d',0
 
-section '.code' code readable executable
+section '.code' code readable executable ; секция кода
 
 macro mov_zero op1 {
     mov op1,0
@@ -80,7 +80,7 @@ start:
 
 
 
-section '.idata' import data readable
+section '.idata' import data readable ; секция импорта
  
  library msvcrt,'MSVCRT.DLL',\
     kernel32,'KERNEL32.DLL'
